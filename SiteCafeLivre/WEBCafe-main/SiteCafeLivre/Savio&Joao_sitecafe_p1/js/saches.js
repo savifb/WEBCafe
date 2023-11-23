@@ -1,20 +1,12 @@
 // Seleciona os links
-var linkExpresso= document.getElementById('expresso');
-var linkDescafeinado = document.getElementById('descafeinado');
-var linkLivanto = document.getElementById('livanto');
-var linkClassico = document.getElementById('classico');
-var linkIntenso = document.getElementById('intenso');
-var linkRistreto = document.getElementById('ristreto');
-var linkVanillo = document.getElementById('vanillo');
+var linkDolceGusto = document.getElementById('dolce-gusto');
+var linkSenseo = document.getElementById('senseo');
+var linkNespresso = document.getElementById('nespresso');
 
 // quando clica abre a janela
-linkExpresso.addEventListener('click', abrirJanela);
-linkDescafeinado.addEventListener('click', abrirJanela);
-linkLivanto.addEventListener('click', abrirJanela);
-linkClassico.addEventListener('click', abrirJanela);
-linkIntenso.addEventListener('click', abrirJanela);
-linkRistreto.addEventListener('click', abrirJanela);
-linkVanillo.addEventListener('click', abrirJanela);
+linkDolceGusto.addEventListener('click', abrirJanela);
+linkSenseo.addEventListener('click', abrirJanela);
+linkNespresso.addEventListener('click', abrirJanela);
 
 function abrirJanela(event) {
     event.preventDefault();
@@ -23,8 +15,8 @@ function abrirJanela(event) {
 
     // Exibe as informações sobre os sachês
     janela.document.write('<h1>' + this.textContent + '</h1>');
-    janela.document.write('<p>Quantidade de sachês:</p>');
-    janela.document.write('<img src="..." alt="Imagem da caixa">');
+    janela.document.write('<p>Quantidade de sachês: </p>');
+    janela.document.write('<img src="./image/cafe.jpg" widht="5px" alt="Imagem da caixa">');
     janela.document.write('<p>Lista de produtos: ...</p>');
     janela.document.write('<button onclick="window.close()">Fechar</button>');
 }
