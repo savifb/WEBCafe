@@ -1,41 +1,39 @@
-// Define as informações das máquinas
-var piccolo = {
-    foto: './image/piccolo.jpg',
-    preco: 'R$300,00'
+var maquinas = {
+    piccolo: {
+        foto: './image/piccolo.jpg',
+        preco: 'R$300,00'
+    },
+    inissia: {
+        foto: './image/inissia.jpg',
+        preco: 'R$400,00'
+    },
+    uc50: {
+        foto: './image/uc50.jpg',
+        preco: 'R$450,00'
+    },
+    hd7811: {
+        foto: './image/senseo.jpg',
+        preco: 'R$250,00'
+    }
 };
+// Seleciona todos os links de modelo
+var modelos = document.querySelectorAll('.modelo');
 
-var inissia = {
-    foto: './image/inissia.jpg',
-    preco: 'R$400,00'
-};
+// Seleciona a célula da foto e do preço
+var fotoCell = document.querySelector('#rowPiccolo .foto img');
+var precoCell = document.querySelector('#rowPiccolo .preco');
 
-var uc50 = {
-    foto: './image/uc50.jpg',
-    preco: 'R$450,00'
-};
+// Adiciona ouvintes de eventos a todos os links de modelo
+modelos.forEach(function(modelo) {
+    modelo.addEventListener('click', function(event) {
+        event.preventDefault();
 
-// Seleciona os elementos a serem atualizados
-var fotoPiccolo = document.getElementById('piccoloImg');
-var precoPiccolo = document.getElementById('piccoloPrice');
+        // Obtém o modelo correspondente
+        var modeloData = maquinas[this.dataset.modelo];
 
-var fotoInissia = document.getElementById('inissiaImg');
-var precoInissia = document.getElementById('inissiaPrice');
-
-var fotoUC50 = document.getElementById('uc50Img');
-var precoUC50 = document.getElementById('uc50Price');
-
-// Atualiza os elementos com as informações das máquinas
-fotoPiccolo.src = piccolo.foto;
-fotoPiccolo.style.width = '200px';
-fotoPiccolo.style.height = 'auto';
-precoPiccolo.textContent = piccolo.preco;
-
-fotoInissia.src = inissia.foto;
-fotoInissia.style.width = '200px';
-fotoInissia.style.height = 'auto';
-precoInissia.textContent = inissia.preco;
-
-fotoUC50.src = uc50.foto;
-fotoUC50.style.width = '200px';
-fotoUC50.style.height = 'auto';
-precoUC50.textContent = uc50.preco;
+        // Atualiza a foto e o preço
+        fotoCell.src = modeloData.foto;
+        fotoCell.style.display = 'block'; // Mostra a imagem
+        precoCell.innerHTML = modeloData.preco;
+    });
+});

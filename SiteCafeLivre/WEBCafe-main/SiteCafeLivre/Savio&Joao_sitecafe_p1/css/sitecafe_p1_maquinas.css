@@ -9,7 +9,16 @@ nav li a{
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
 }
+.foto img {
+    display: none;
+}
+td a.modelo:link {
+    color: #573218;
+}
 
+td a.modelo:visited {
+    color: #662222;
+}
 table {
     border-collapse: collapse;
     width: 100%;
