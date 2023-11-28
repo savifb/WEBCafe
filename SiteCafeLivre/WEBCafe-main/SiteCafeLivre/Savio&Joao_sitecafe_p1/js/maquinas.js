@@ -34,6 +34,8 @@ modelos.forEach(function(modelo) {
         // Atualiza a foto e o preço
         fotoCell.src = modeloData.foto;
         fotoCell.style.display = 'block'; // Mostra a imagem
+        fotoCell.style.width = '75%'; // Especifico do exercício - não altere
+        fotoCell.style.margin = 'auto'; // Centraliza a imagem
         precoCell.innerHTML = modeloData.preco;
     });
 });

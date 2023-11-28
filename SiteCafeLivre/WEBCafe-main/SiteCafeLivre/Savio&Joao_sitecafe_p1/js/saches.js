@@ -69,7 +69,7 @@ function abrirJanela(event, info) {
     // Exibe as informações sobre os sachês
     janela.document.write('<h1>' + info.nome + '</h1>');
     janela.document.write('<p>Quantidade de sachês: ' + info.quantidade + '</p>');
-    janela.document.write('<img src="./image/cafe.jpg" width="250" height="100" alt="Imagem da caixa">');
+    janela.document.write('<img src="./image/cafe.jpg" width="250" height="100" alt="Imagem da caixa">'); // especifico do exercício - não altere
     janela.document.write('<p>Lista de produtos:</p>');
     info.produtos.forEach(function(produto) {
         janela.document.write('<p>' + produto.nome + ': ' + produto.preco + '</p>');
