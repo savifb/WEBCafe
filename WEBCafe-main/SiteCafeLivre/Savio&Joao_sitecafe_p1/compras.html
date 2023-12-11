@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compras</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/sitecafe_p1_compras.css">
+</head>
+
+<body>
+    <header>
+    <banner>
+        <img src="./image/Banner_cafe.png" alt="Banner">
+    </header>    
+    
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="saches.html">Sachês</a></li>
+            <li><a href="maquinas.html">Máquinas</a></li>
+            <li><a href="compras.html">Compras</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form id="compras">
+            <fieldset>
+                <legend>Identificação</legend>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" onchange="validarCPF()">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                </fieldset>
+                <fieldset>
+                <legend>Produtos</legend>
+                <label for="maquina">Máquinas:</label>
+                <select id="maquina">
+                    <option value="">Selecione uma máquina</option>
+                    <option disabled>Dolce Gusto:</option>
+                    <option value="Piccolo">Piccolo</option>
+                    <option disabled>Nespresso:</option>
+                    <option value="Inissia C40">Inissia C40</option>
+                    <option value="UC50">UC50</option>
+                    <option disabled>Senseo:</option>
+                    <option value="HD7811/98">HD7811/98</option>
+                </select>
+                <button onclick="adicionarAoCarrinho(event, 'maquina')">Incluir</button>
+                <button onclick="removerDoCarrinho(event, 'maquina')">Remover</button>
+
+                <label for="saches">Sachês:</label>
+                <select id="sache">
+                    <option value="">Selecione um sachê</option>
+                    <option disabled>Dolce Gusto:</option>
+                    <option value="Expresso">Expresso</option>
+                    <option value="Descafeinado">Descafeinado</option>
+                    <option disabled>Nespresso:</option>
+                    <option value="Livanto">Livanto</option>
+                    <option value="Ristretto">Ristretto</option>
+                    <option value="Vanilio">Vanilio</option>
+                    <option disabled>Senseo:</option>
+                    <option value="Classico">Clássico</option>
+                    <option value="Intenso">Intenso</option>
+                </select>
+                <button onclick="adicionarAoCarrinho(event, 'sache')">Incluir</button>
+                <button onclick="removerDoCarrinho(event, 'sache')">Remover</button>
+
+                <label for="lista">Lista de Compras:</label>
+                <textarea id="lista" readonly></textarea>
+
+                <label for="total">Total:</label>
+                <input type="text" id="total" readonly>
+                </fieldset>
+            </fieldset>
+            <fieldset>
+                <legend>Pagamento</legend>
+                <label for="forma-pagamento">Forma de pagamento:</label>
+                <input type="radio" id="cartao" name="forma-pagamento" value="cartao">
+                <label for="cartao">Cartão</label>
+                <input type="radio" id="dinheiro" name="forma-pagamento" value="dinheiro">
+                <label for="dinheiro">Dinheiro</label>
+                <input type="radio" id="cheque" name="forma-pagamento" value="cheque">
+                <label for="cheque">Cheque</label>
+                <label for="validade-cartao">Validade do cartão:</label>
+                <input type="date" id="validade-cartao" name="validade-cartao">
+                <label for="numero-cartao">Número do cartão:</label>
+                <input type="text" id="numero-cartao" name="numero-cartao">
+                <label for="bandeira-cartao">Bandeira do cartão:</label>
+                <input type="radio" id="visa" name="bandeira-cartao" value="visa">
+                <label for="visa">Visa</label>
+                <input type="radio" id="mastercard" name="bandeira-cartao" value="mastercard">
+                <label for="mastercard">Mastercard</label>
+                <input type="radio" id="cielo" name="bandeira-cartao" value="cielo">
+                <label for="cielo">Cielo</label>
+            </fieldset>
+            <input type="submit" value="Enviar">
+        </form>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                var numeroCartaoInput = document.getElementById("numero-cartao");
+                numeroCartaoInput.addEventListener("keyup", verificarBandeiraCartao);
+            });
+
+            function verificarBandeiraCartao() {
+                var numeroCartao = document.getElementById("numero-cartao").value;
+                var bandeiraVisa = document.getElementById("visa");
+                var bandeiraMastercard = document.getElementById("mastercard");
+                var bandeiraCielo = document.getElementById("cielo");
+
+                var primeiroDigito = parseInt(numeroCartao.charAt(0));
+
+                bandeiraVisa.checked = false;
+                bandeiraMastercard.checked = false;
+                bandeiraCielo.checked = false;
+
+                if (primeiroDigito === 4) {
+                    bandeiraVisa.checked = true;
+                } else if (primeiroDigito === 5) {
+                    var doisPrimeirosDigitos = parseInt(numeroCartao);
+                    if (doisPrimeirosDigitos >= 51 && doisPrimeirosDigitos <= 55) {
+                        bandeiraMastercard.checked = true;
+                    } else {
+                        exibirErro();
+                    }
+                } else if (primeiroDigito === 3) {
+                    var doisPrimeirosDigitosAmex = parseInt(numeroCartao);
+                    if (doisPrimeirosDigitosAmex === 34 || doisPrimeirosDigitosAmex === 37) {
+                        bandeiraCielo.checked = true;
+                    } else {
+                        exibirErro();
+                    }
+                } else {
+                    exibirErro();
+                }
+            }
+
+            function exibirErro() {
+                alert("Número de cartão inválido. Por favor, verifique e tente novamente.");
+                document.getElementById("numero-cartao").value = "";
+            }
+        </script>
+    </main>
+    <footer>
+        <p>© 2022 Loja de Café. Todos os direitos reservados.</p>
+    </footer>
+</body>
+<script src="./js/validacaocompras.js"></script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Máquinas de Café</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/sitecafe_p1_maquinas.css">
+</head>
+<body>
+
+    <header>
+        <banner>
+            <img src="./image/Banner_cafe.png" alt="Banner">
+        </banner>
+    </header>    
+    <nav>
+    
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="saches.html">Sachês</a></li>
+            <li><a href="maquinas.html">Máquinas</a></li>
+            <li><a href="compras.html">Compras</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <table>
+            <tr>
+                <th class="linha-titulo" colspan="4">Máquinas de Café</th>
+            </tr>
+            <tr class="linha-titulo">
+                <td>TIPO</td>
+                <td>MODELO</td>
+                <td>FOTOS</td>
+                <td>PREÇO</td>
+            </tr>
+            <tr id="rowPiccolo">
+                <td class="titulo-linha">DOLCE GUSTO</td>
+                <td><a href="#" class="modelo" data-modelo="piccolo">PICCOLO</a></td>
+                <td class="foto" rowspan="4"><img src="./image/vazio.jpg" alt="Imagem vazia"></td>
+                <td class="preco" rowspan="4"></td>
+            </tr>
+            <tr id="rowInissia">
+                <td class="titulo-linha" rowspan="2">NESPRESSO</td>
+                <td><a href="#" class="modelo" data-modelo="inissia">INSSIA C40</a></td>
+            </tr>
+            <tr id="rowUc50">
+                <td><a href="#" class="modelo" data-modelo="uc50">UC50</a></td>
+                
+            </tr>
+            <tr id="rowHd7811">
+                <td class="titulo-linha">SENSEO</td>
+                <td><a href="#" class="modelo" data-modelo="hd7811">HD7811</a></td>
+             
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+        <p>© 2022 Loja de Café. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
+<script src="./js/maquinas.js"></script>
